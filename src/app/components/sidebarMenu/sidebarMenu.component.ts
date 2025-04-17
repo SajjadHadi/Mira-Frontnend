@@ -6,10 +6,11 @@ import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { MenuModule } from 'primeng/menu';
 import { RippleModule } from 'primeng/ripple';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-sidebar-menu',
-  imports: [MenuModule, BadgeModule, RippleModule, AvatarModule, NgIf, RouterLink],
+  imports: [MenuModule, BadgeModule, RippleModule, AvatarModule, NgIf, RouterLink, LogoComponent],
   templateUrl: './sidebarMenu.component.html',
 })
 export class SidebarMenuComponent {

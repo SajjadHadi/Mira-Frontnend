@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Toast } from 'primeng/toast';
 import { SidebarMenuComponent } from './components/sidebarMenu/sidebarMenu.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SidebarMenuComponent],
+  imports: [RouterOutlet, SidebarMenuComponent, Toast],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'mira-frontend';
