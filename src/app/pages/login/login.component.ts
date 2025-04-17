@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FormComponent } from '../../components/form/form.component';
 import { LoginRequest } from '../../interfaces/auth';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,8 @@ import { LoginRequest } from '../../interfaces/auth';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   loginConfig = {
     title: 'Login',
@@ -20,7 +24,7 @@ export class LoginComponent {
         name: 'username',
         label: 'Username',
         type: 'text',
-        icon: 'pi-sign',
+        icon: 'pi-at',
         validators: [Validators.required, Validators.minLength(4), Validators.maxLength(255)]
       },
       {
@@ -35,6 +39,10 @@ export class LoginComponent {
   }
 
   onLogin(data: LoginRequest) {
-    console.log(data);
+    this.authService.login(data).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+    });
   }
 }

@@ -25,7 +25,7 @@ export class RegisterComponent {
         name: 'username',
         label: 'Username',
         type: 'text',
-        icon: 'pi-sign',
+        icon: 'pi-at',
         validators: [Validators.required, Validators.minLength(3), Validators.maxLength(255)],
       },
       {

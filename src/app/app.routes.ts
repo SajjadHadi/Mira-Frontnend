@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 import { DefaultComponent } from './layouts/default/default.component';
 import { PlainComponent } from './layouts/plain/plain.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -10,6 +11,8 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultComponent,
+    canActivate: [authGuard],
+    data: { authMode: 'authenticated' },
     children: [
       {
         path: '',
@@ -27,11 +30,15 @@ export const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [authGuard],
+        data: { authMode: 'non-authenticated' },
       },
       {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
+        canActivate: [authGuard],
+        data: { authMode: 'non-authenticated' },
       }
     ]
   },
