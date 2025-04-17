@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormComponent } from '../../components/form/form.component';
-import { Login } from '../../interfaces/form';
+import { LoginRequest } from '../../interfaces/auth';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +17,11 @@ export class LoginComponent {
     description: "Enter your credentials to login to your account. If you're a new user please create a new account in the sign up page",
     fields: [
       {
-        name: 'email',
-        label: 'Email',
-        type: 'email',
-        icon: 'pi-envelope',
-        validators: [Validators.required, Validators.email]
+        name: 'username',
+        label: 'Username',
+        type: 'text',
+        icon: 'pi-sign',
+        validators: [Validators.required, Validators.minLength(4), Validators.maxLength(255)]
       },
       {
         name: 'password',
@@ -34,7 +34,7 @@ export class LoginComponent {
     submitLabel: 'Login'
   }
 
-  onLogin(data: Login) {
+  onLogin(data: LoginRequest) {
     console.log(data);
   }
 }

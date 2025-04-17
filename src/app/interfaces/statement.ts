@@ -1,8 +1,19 @@
-export interface CreateStatement {
+export interface DetectRequest {
   statement: string;
 }
 
+export interface DetectResponse {
+  disorders: string;
+}
+
 export interface Statement {
+  id: number;
   statement: string;
-  disorder: string;
+  disorders: string;
+  created_at: string;
+}
+
+export interface StatementsResponse {
+  statements: Statement[];
+  total: number;
 }

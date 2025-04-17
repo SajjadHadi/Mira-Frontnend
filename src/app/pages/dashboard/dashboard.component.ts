@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators } from "@angular/forms";
 import { FormComponent } from "../../components/form/form.component";
-import { CreateStatement } from "../../interfaces/statement";
+import { DetectRequest } from "../../interfaces/statement";
 
 @Component({
     selector: 'app-dashboard',
@@ -27,7 +27,7 @@ export class DashboardComponent {
         submitLabel: 'Detect'
     }
 
-    onState(data: CreateStatement) {
+    onState(data: DetectRequest) {
         console.log(data);
     }
 }
