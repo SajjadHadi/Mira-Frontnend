@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Validators } from "@angular/forms";
+import { Fieldset } from "primeng/fieldset";
 import { FormComponent } from "../../components/form/form.component";
 import { DetectRequest } from "../../interfaces/statement";
+import { LlmService } from '../../services/llm.service';
 
 @Component({
     selector: 'app-dashboard',
-    imports: [
-        FormComponent
-    ],
+    standalone: true,
+    imports: [FormComponent, Fieldset],
     templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {
+    private llmService = inject(LlmService);
+    detectionResult: string = '';
 
     statementConfig = {
-        title: 'Mental Statement Deteails',
+        title: 'Mental Statement Details',
         description: "Describe your emotional state as detailed as possible then click detect button to get the detection.",
         fields: [
             {
@@ -28,6 +31,10 @@ export class DashboardComponent {
     }
 
     onState(data: DetectRequest) {
-        console.log(data);
+        this.llmService.detect(data).subscribe({
+            next: (response) => {
+                this.detectionResult = response.disorders;
+            }
+        });
     }
 }

@@ -2,10 +2,6 @@ export interface DetectRequest {
   statement: string;
 }
 
-export interface DetectResponse {
-  disorders: string;
-}
-
 export interface Statement {
   id: number;
   statement: string;

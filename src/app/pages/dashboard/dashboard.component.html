@@ -1,5 +1,16 @@
 <app-form
-        [config]="statementConfig"
-        (formSubmit)="onState($event)"
-        class="mx-auto mt-20 sm:w-144"
+  [config]="statementConfig"
+  (formSubmit)="onState($event)"
+  class="mx-auto mt-20 sm:w-144"
 ></app-form>
+
+@if (detectionResult) {
+  <div class="mx-auto mt-20 w-168">
+    <p-fieldset legend="Detection Result">
+      <p class="m-auto">
+        Based on the statement you've provided your state may be: <span class="font-black text-primary">{{ detectionResult }}</span>
+      </p>
+    </p-fieldset>
+  </div>
+
+}
