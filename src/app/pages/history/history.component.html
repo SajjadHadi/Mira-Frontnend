@@ -1,1 +1,43 @@
-<p>statements works!</p>
+<div class="card my-2 mx-4">
+  <p-table [columns]="cols"
+           [value]="statements"
+           [tableStyle]="{ 'min-width': '50rem' }"
+           [loading]="loading">
+
+    <!-- Table headers -->
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th>#</th> <!-- Index -->
+        <th *ngFor="let col of columns">
+          {{ col.header }}
+        </th>
+      </tr>
+    </ng-template>
+
+    <!-- Table body -->
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+      <tr>
+        <td>{{ rowIndex + 1 }}</td>
+        <td *ngFor="let col of columns">
+          <ng-container [ngSwitch]="col.field">
+            <span *ngSwitchCase="'created_at'">
+              {{ rowData[col.field] | date:'medium' }}
+            </span>
+            <span *ngSwitchDefault>
+              {{ rowData[col.field] }}
+            </span>
+          </ng-container>
+        </td>
+      </tr>
+    </ng-template>
+
+    <!-- Empty state -->
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td [attr.colspan]="cols.length + 1" class="text-center">
+          No statements found
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
