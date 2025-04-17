@@ -1,8 +1,9 @@
 @import "tailwindcss";
 @import "primeicons/primeicons.css";
-@plugin "tailwindcss-primeui";
+@import "tailwindcss-primeui";
 
-html {
+html, body {
   font-size: 14px;
   font-family: Inter, sans-serif, "Times New Roman";
+  @apply min-h-screen;
 }

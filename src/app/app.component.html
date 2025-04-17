@@ -1,4 +1,10 @@
-<h1 class="text-8xl">Hi there</h1>
+<div class="flex flex-row">
+  <div>
+    <app-sidebar-menu></app-sidebar-menu>
+  </div>
 
-<p-button label="Profile" icon="pi pi-user" />
+  <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
